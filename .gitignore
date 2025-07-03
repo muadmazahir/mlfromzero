@@ -11,3 +11,4 @@ test-db
 .DS_Store
 config.json
 sft_output/
+.ruff_cache/
