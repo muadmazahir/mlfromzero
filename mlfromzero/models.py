@@ -14,8 +14,8 @@ class Vector:
         A vector added by a vector returns a vector: x + z = [x₁ + z₁, x₂ + z₂, x₃ + z₃, ..., xₙ + zₙ]
         """
         final_vector_list = []
-        for index, feature in enumerate(self.vector_list):
-            final_vector_list.append(feature + addend.vector_list[index])
+        for index, feature in enumerate(self):
+            final_vector_list.append(feature + addend[index])
         return Vector(final_vector_list)
 
     def __mul__(self, multiplier: Union['Vector', int]) -> Union['Vector', int]:
@@ -26,14 +26,14 @@ class Vector:
         """
         if isinstance(multiplier, int):
             final_vector_list = []
-            for feature in self.vector_list:
+            for feature in self:
                 final_vector_list.append(multiplier * feature)
             return Vector(final_vector_list)
 
         if isinstance(multiplier, Vector):
             final_value = 0
-            for index, feature in enumerate(self.vector_list):
-                final_value += feature * multiplier.vector_list[index]
+            for index, feature in enumerate(self):
+                final_value += feature * multiplier[index]
             return final_value
         
         raise ValueError('multiplier should be either of type `Vector` or `int`')
@@ -43,12 +43,24 @@ class Vector:
         A vector subtracted by a vector returns a vector: x - z = [x₁ - z₁, x₂ - z₂, x₃ - z₃, ..., xₙ - zₙ]
         """
         final_vector_list = []
-        for index, feature in enumerate(self.vector_list):
-            final_vector_list.append(feature - subtrahend.vector_list[index])
+        for index, feature in enumerate(self):
+            final_vector_list.append(feature - subtrahend[index])
         return Vector(final_vector_list)
 
     def __len__(self):
         return len(self.vector_list)
+
+    def __getitem__(self, index: int) -> int:
+        return self.vector_list[index]
+
+    def __iter__(self):
+        return iter(self.vector_list)
+
+    def __setitem__(self, index: int, value: int):
+        self.vector_list[index] = value
+
+    def __delitem__(self, index: int):
+        del self.vector_list[index]
 
 
 class Matrix:
@@ -61,24 +73,24 @@ class Matrix:
     
     @property
     def shape(self) -> tuple[int, int]:
-        num_rows = len(self.matrix_list)
-        num_columns = len(self.matrix_list[0]) if self.matrix_list else 0
+        num_rows = len(self)
+        num_columns = len(self[0]) if self.matrix_list else 0
 
         return num_rows, num_columns
 
     @property
     def transpose(self) -> 'Matrix':
         # Transpose using list comprehension
-        return Matrix([[row[i] for row in self.matrix_list] for i in range(len(self.matrix_list[0]))])
+        return Matrix([[row[i] for row in self] for i in range(len(self[0]))])
 
     @property
     def inverse(self) -> 'Matrix':
         """
         Calculates the inverse of a matrix using the Gauss-Jordan elimination method.
         """
-        n = len(self.matrix_list)
-        augmented_matrix = [row[:] for row in self.matrix_list]
-        inverse_matrix = self.identity(n).matrix_list
+        n = len(self)
+        augmented_matrix = [row[:] for row in self]
+        inverse_matrix = self.identity(n)
 
         for fd in range(n):
             fd_scaler = 1.0 / augmented_matrix[fd][fd]
@@ -91,7 +103,7 @@ class Matrix:
                     for j in range(n):
                         augmented_matrix[i][j] = augmented_matrix[i][j] - cr_scaler * augmented_matrix[fd][j]
                         inverse_matrix[i][j] = inverse_matrix[i][j] - cr_scaler * inverse_matrix[fd][j]
-        return Matrix(inverse_matrix)
+        return Matrix(inverse_matrix.matrix_list)
 
     @staticmethod
     def identity(size: int) -> 'Matrix':
@@ -106,7 +118,7 @@ class Matrix:
         
         final_matrix = []
 
-        for row, addend_row in zip(self.matrix_list, addend.matrix_list):
+        for row, addend_row in zip(self, addend):
             row_additions = []
             for value, addend_value in zip(row, addend_row):
                 row_additions.append(value + addend_value)
@@ -120,7 +132,7 @@ class Matrix:
         
         final_matrix = []
 
-        for row, subtrahend_row in zip(self.matrix_list, subtrahend.matrix_list):
+        for row, subtrahend_row in zip(self, subtrahend):
             row_subtractions = []
             for value, subtrahend_value in zip(row, subtrahend_row):
                 row_subtractions.append(value - subtrahend_value)
@@ -131,7 +143,7 @@ class Matrix:
     def __mul__(self, multiplier: Union['Matrix', int]) -> 'Matrix':
         final_matrix = []
         if isinstance(multiplier, int):
-            for row in self.matrix_list:
+            for row in self:
                 row_multiplications = []
                 for value in row:
                     row_multiplications.append(value * multiplier)
@@ -160,10 +172,10 @@ class Matrix:
                         ]
                     ] 
             """
-            num_rows_A = len(self.matrix_list)
-            num_cols_A = len(self.matrix_list[0])
-            num_rows_B = len(multiplier.matrix_list)
-            num_cols_B = len(multiplier.matrix_list[0])
+            num_rows_A = len(self)
+            num_cols_A = len(self[0])
+            num_rows_B = len(multiplier)
+            num_cols_B = len(multiplier[0])
             
             if num_cols_A != num_rows_B:
                 raise ValueError("Number of rows of multiplier has to match number of columns of matrix you want to multiply it to")
@@ -175,9 +187,24 @@ class Matrix:
             for i in range(num_rows_A):
                 for j in range(num_cols_B):
                     for k in range(num_cols_A):
-                        final_matrix[i][j] += self.matrix_list[i][k] * multiplier.matrix_list[k][j]
+                        final_matrix[i][j] += self[i][k] * multiplier[k][j]
             
         return Matrix(final_matrix)
+
+    def __getitem__(self, index: int) -> list[int]:
+        return self.matrix_list[index]
+
+    def __iter__(self):
+        return iter(self.matrix_list)
+
+    def __setitem__(self, index: int, value: list[int]):
+        self.matrix_list[index] = value
+
+    def __delitem__(self, index: int):
+        del self.matrix_list[index]
+    
+    def __len__(self):
+        return len(self.matrix_list)
 
 
 def caclulate_mean_squared_error(predicted: list[int], actual: list[int]) -> int:
