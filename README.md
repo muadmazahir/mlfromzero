@@ -75,26 +75,33 @@ The FNN implementation uses gradient descent with backpropagation for training:
 
 **Forward Propagation**:
 - **Weighted Sum**: 
-$$ 
+
+$$
 z = \sum_{i=1}^{n} w_i x_i + b 
 $$
 - **Activation**: 
-$$ 
-a = ReLU(z) = max(0, z) 
+
+$$
+a = ReLU(z) = max(0, z)
 $$
 
 **Backpropagation**:
 - **Error Signal**: 
-$$ 
-\delta = -2 \cdot (\text{actual\_output} - \text{predicted\_output}) 
+
 $$
+\delta = -2 \cdot (\text{actual\_output} - \text{predicted\_output})
+$$
+
 - **Weight Update**: 
-$$ 
-w_{\text{new}} = w_{\text{old}} - \left( \frac{\partial E}{\partial w} \cdot \text{learning\_rate} \right) 
+
 $$
+w_{\text{new}} = w_{\text{old}} - \left( \frac{\partial E}{\partial w} \cdot \text{learning\_rate} \right)
+$$
+
+
 - **Bias Update**: 
-$$ 
-b_{\text{new}} = b_{\text{old}} - \left( \frac{\partial E}{\partial b} \cdot \text{learning\_rate} \right) 
+$$
+b_{\text{new}} = b_{\text{old}} - \left( \frac{\partial E}{\partial b} \cdot \text{learning\_rate} \right)
 $$
 
 **Partial Derivative of Parameters**:
@@ -102,24 +109,22 @@ $$
 $$
 \frac{\partial E}{\partial w} = \delta \cdot \left( \prod_{i}^{n} w_i \right) \cdot \text{ReLU}'(z_i) \cdot a_{\text{prev}_{i-1}}
 $$
+
 - **Bias Gradient**: 
 $$
 \frac{\partial E}{\partial w} = \delta \cdot \left( \prod_{i}^{n} w_i \right) \cdot \text{ReLU}'(z_i)
 $$
+
 - **ReLU Derivative**: 
 $$
-\text{ReLU}(z) = 
-\begin{cases}
-1 & \text{if } z > 0 \\
-0 & \text{if } z \leq 0
-\end{cases}
+\text{ReLU}(z) = \begin{cases}1 & \text{if } z > 0 \\ 0 & \text{if } z \leq 0\end{cases}
 $$
 
 **Note** - See [here](docs/partial_derivatives_calculation.md) for more details on how partial derivatives of parameters were calculated.
 
 **Loss Function**:
 $$
-\text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
+\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
 $$
 
 ### Matrix and Vectors
