@@ -84,7 +84,7 @@ The FNN implementation uses gradient descent with backpropagation for training:
 
 
 - **Bias Update**: 
-$b_{\text{new}} = b_{\text{old}} - \left( \frac{\partial E}{\partial b} \cdot \text{learning\_rate} \right)$
+$b_{\text{new}} = b_{\text{old}}-\left( \frac{\partial E}{\partial b} \cdot \text{learning\_rate} \right)$
 
 **Partial Derivative of Parameters**:
 - **Weight Gradient**:
@@ -94,7 +94,10 @@ $\frac{\partial E}{\partial w} = \delta \cdot \left( \prod_{i}^{n} w_i \right) \
 $\frac{\partial E}{\partial w} = \delta \cdot \left( \prod_{i}^{n} w_i \right) \cdot \text{ReLU}'(z_i)$
 
 - **ReLU Derivative**: 
-$\text{ReLU}(z) = \begin{cases}1 & \text{if } z > 0 \\ 0 & \text{if } z \leq 0\end{cases}$
+
+$$
+\text{ReLU}(z) = \begin{cases}1 & \text{if } z > 0 \\ 0 & \text{if } z \leq 0\end{cases}
+$$
 
 **Note** - See [here](docs/partial_derivatives_calculation.md) for more details on how partial derivatives of parameters were calculated.
 
