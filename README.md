@@ -78,7 +78,7 @@ The FNN implementation uses gradient descent with backpropagation for training:
 - **Activation**: $a = ReLU(z) = max(0, z)$
 
 **Backpropagation**:
-- **Error Signal**: $\delta = -2 \cdot (\text{actual\_output} - \text{predicted\_output}) $
+- **Error Signal**: $\delta = -2 \cdot \left(\text{actual\_output} - \text{predicted\_output}\right) $
 
 - **Weight Update**: $w_{\text{new}} = w_{\text{old}} - \left( \frac{\partial E}{\partial w} \cdot \text{learning\_rate} \right)$
 
