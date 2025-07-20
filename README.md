@@ -84,7 +84,7 @@ $$
 \delta = -2(y - \hat{y}) 
 $$
 
-- **Weight Update**: $w_{\text{new}} = w_{\text{old}} - \left( \frac{\partial E}{\partial w} \cdot \text{learning\_rate} \right)$
+- **Weight Update**: $w_{new} = w_{old} - \left( \frac{\partial E}{\partial w} \cdot learning\_rate \right)$
 
 
 - **Bias Update**: $b_{\text{new}} = b_{\text{old}}$ - $\left( \frac{\partial E}{\partial b} \cdot \text{learning\_rate} \right)$
