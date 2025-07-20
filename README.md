@@ -87,7 +87,7 @@ $$
 - **Weight Update**: $w_{new} = w_{old} - \left( \frac{\partial E}{\partial w} \cdot \text{learning rate} \right)$
 
 
-- **Bias Update**: $b_{\text{new}} = b_{\text{old}}$ - $\left( \frac{\partial E}{\partial b} \cdot \text{learning\_rate} \right)$
+- **Bias Update**: $b_{\text{new}} = b_{\text{old}}$ - $\left( \frac{\partial E}{\partial b} \cdot \text{learning rate} \right)$
 
 **Partial Derivative of Parameters**:
 - **Weight Gradient**:
