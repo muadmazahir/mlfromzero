@@ -120,11 +120,11 @@ $$
 
 where:
 
-- $\begin{bmatrix}w_{11} & w_{12}\end{bmatrix} =$ all weights of last layers neuron's
+$\begin{bmatrix}w_{11} & w_{12}\end{bmatrix} =$ all weights of last layers neuron's
 
-- $ \begin{bmatrix} w_7 & w_9 \\ w_8 & w_{10}\end{bmatrix} =$ all weights of third hidden layer's neuron's
+$ \begin{bmatrix} w_7 & w_9 \\ w_8 & w_{10}\end{bmatrix} =$ all weights of third hidden layer's neuron's
 
-- $\begin{bmatrix} w_3 \\ w_4 \end{bmatrix}=$ The first weight of each neuron in the second hidden layer
+$\begin{bmatrix} w_3 \\ w_4 \end{bmatrix}=$ The first weight of each neuron in the second hidden layer
 
 
 
