@@ -133,7 +133,5 @@ where:
 Once the partial derivatives are computed, parameters are updated using gradient descent:
 
 $$
-\theta_{\text{new}} = \theta_{\text{old}} - \left( \text{learning\_rate} \cdot \frac{\partial \mathcal{L}}{\partial \theta} \right)
+\theta_{\text{new}} = \theta_{\text{old}}-\left( \text{learning\_rate} \cdot \frac{\partial \mathcal{L}}{\partial \theta} \right)
 $$
-
-
