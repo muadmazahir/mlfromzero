@@ -58,7 +58,7 @@ nn.fit(inputs, outputs, epochs=100)
 The linear regression implementation uses the normal equation for optimal parameter estimation:
 
 **Formula**:
-$$\boldsymbol{\theta} = \left( \mathbf{X}^\top \mathbf{X} \right)^{-1} \mathbf{X}^\top \mathbf{y}$$
+$\boldsymbol{\theta} = \left( \mathbf{X}^\top \mathbf{X} \right)^{-1} \mathbf{X}^\top \mathbf{y}$
 
 **Steps**:
 1. **Design Matrix**: Add bias term (column of 1s) to feature matrix
@@ -74,13 +74,28 @@ $$\boldsymbol{\theta} = \left( \mathbf{X}^\top \mathbf{X} \right)^{-1} \mathbf{X
 The FNN implementation uses gradient descent with backpropagation for training:
 
 **Forward Propagation**:
-- **Weighted Sum**: $$ z = \sum_{i=1}^{n} w_i x_i + b $$
-- **Activation**: $$ a = ReLU(z) = max(0, z) $$
+- **Weighted Sum**: 
+$$ 
+z = \sum_{i=1}^{n} w_i x_i + b 
+$$
+- **Activation**: 
+$$ 
+a = ReLU(z) = max(0, z) 
+$$
 
 **Backpropagation**:
-- **Error Signal**: $$ \delta = -2 \cdot (\text{actual\_output} - \text{predicted\_output}) $$
-- **Weight Update**: $$ w_{\text{new}} = w_{\text{old}} - \left( \frac{\partial E}{\partial w} \cdot \text{learning\_rate} \right) $$
-- **Bias Update**: $$ b_{\text{new}} = b_{\text{old}} - \left( \frac{\partial E}{\partial b} \cdot \text{learning\_rate} \right) $$
+- **Error Signal**: 
+$$ 
+\delta = -2 \cdot (\text{actual\_output} - \text{predicted\_output}) 
+$$
+- **Weight Update**: 
+$$ 
+w_{\text{new}} = w_{\text{old}} - \left( \frac{\partial E}{\partial w} \cdot \text{learning\_rate} \right) 
+$$
+- **Bias Update**: 
+$$ 
+b_{\text{new}} = b_{\text{old}} - \left( \frac{\partial E}{\partial b} \cdot \text{learning\_rate} \right) 
+$$
 
 **Partial Derivative of Parameters**:
 - **Weight Gradient**:

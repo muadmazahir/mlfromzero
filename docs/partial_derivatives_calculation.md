@@ -44,7 +44,8 @@ $$
 $$
 
 ### Derivative of Biases
-$$\frac{\partial \mathcal{L}}{\partial \theta} = -2(y - \hat{y}) \cdot \left( \text{product of weights in path to output} \right) \cdot \left( \text{derivative of activation function} \right)
+$$
+\frac{\partial \mathcal{L}}{\partial \theta} = -2(y - \hat{y}) \cdot \left( \text{product of weights in path to output} \right) \cdot \left( \text{derivative of activation function} \right)
 $$
 
 ### Product of weights in path to output
@@ -119,7 +120,7 @@ where:
 
 - $ \begin{bmatrix} w_7 & w_9 \\ w_8 & w_{10}\end{bmatrix} =$ all weights of third hidden layer's neuron's
 
-- $\begin{bmatrix} w_3 \\ w_4 \end{bmatrix}$ = The first weight of each neuron in the second hidden layer
+- $\begin{bmatrix} w_3 \\ w_4 \end{bmatrix}=$ The first weight of each neuron in the second hidden layer
 
 
 
