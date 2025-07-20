@@ -99,7 +99,11 @@ $\frac{\partial E}{\partial w} = \delta \cdot \left( \prod_{i}^{n} w_i \right) \
 - **ReLU Derivative**: 
 
 $$
-\text{ReLU}(z) = \begin{cases}1 & \text{if } z > 0 , 0 & \text{if } z \leq 0\end{cases}
+\text{ReLU}(z) =
+\begin{cases}
+1 & \text{if } z > 0 \\
+0 & \text{if } z \leq 0
+\end{cases}
 $$
 
 **Note** - See [here](docs/partial_derivatives_calculation.md) for more details on how partial derivatives of parameters were calculated.
