@@ -94,6 +94,7 @@ $\frac{\partial E}{\partial w} = \delta \cdot \left( \prod_{i}^{n} w_i \right) \
 $\frac{\partial E}{\partial w} = \delta \cdot \left( \prod_{i}^{n} w_i \right) \cdot \text{ReLU}'(z_i)$
 
 - **ReLU Derivative**: 
+
 $$
 \text{ReLU}(z) =
 \begin{cases}
