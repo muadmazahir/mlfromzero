@@ -7,9 +7,8 @@ This document explains how partial derivatives were calculated for each paramete
 ## Loss Function
 
 The loss function used is Squared Error:
-$$
-L = (y - ŷ)²
-$$
+
+$L = (y - ŷ)²$
 
 Where:
 - `y` is the actual target value
@@ -39,17 +38,20 @@ $$
 When we substitute $ŷ$ with the weighted sum in the second part and simplify, we get the following equations:
 
 ### Derivative of Weights
+
 $$
 \frac{\partial \mathcal{L}}{\partial \theta} = -2(y - \hat{y}) \cdot \left( \text{product of weights in path to output} \right) \cdot \left( \text{derivative of activation function} \right) \cdot \left( \text{weighted sum of previous neuron} \right)
 $$
 
 ### Derivative of Biases
+
 $$
 \frac{\partial \mathcal{L}}{\partial \theta} = -2(y - \hat{y}) \cdot \left( \text{product of weights in path to output} \right) \cdot \left( \text{derivative of activation function} \right)
 $$
 
 ### Product of weights in path to output
 The product of weights in path to output can be calculated using the following formula:
+
 $$
 n^{th}\text{ layer weights},\quad (n-1)^{th} \text{ layer weights},\quad \ldots,\quad x_{i+1}^{j} \text{ weights}
 $$
@@ -63,6 +65,7 @@ where:
 This calculation involves computing the sum of all possible paths from the current neuron to the output layer. For each path, we multiply the weights along that path. This is done by taking the dot product of weights from all layers after the current layer, but for the layer immediately following the current one, we only include the weight that connects to the neuron with the same index as the current neuron. This dot product multiplication should start from the last layer and move backwards.
 
 ### Derivative for ReLU activation function:
+
 $$
 \text{ReLU}’(x) =
 \begin{cases}
@@ -73,6 +76,7 @@ $$
 
 ## Examples based on the above neural network diagram
 ### Example: Weight $w_{11}$ connecting neuron $x_6$ to $x_8$:
+
 $$
 \frac{\partial \mathcal{L}}{\partial w_{11}} = -2(y - \hat{y}) \cdot \text{ReLU}’(x_8) \cdot x_6
 $$
@@ -116,7 +120,7 @@ $$
 
 where:
 
-- $\begin{bmatrix}w_{11} & w_{12}\end{bmatrix} = $ all weights of last layers neuron's
+- $\begin{bmatrix}w_{11} & w_{12}\end{bmatrix} =$ all weights of last layers neuron's
 
 - $ \begin{bmatrix} w_7 & w_9 \\ w_8 & w_{10}\end{bmatrix} =$ all weights of third hidden layer's neuron's
 
