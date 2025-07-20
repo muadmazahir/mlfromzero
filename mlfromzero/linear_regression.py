@@ -19,11 +19,10 @@ class LinearRegression:
         """
         if not isinstance(input[0], list):
             raise TypeError("Input must be a list of lists")
-        
+
         if not isinstance(output, list):
             raise TypeError("Output must be a list")
 
-        
         # add 1 at the beginning of each row to represent bias
         biased_list = [[1] + sublist for sublist in input]
 

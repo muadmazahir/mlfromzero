@@ -19,6 +19,7 @@ def test_linear_regression():
 
     assert model.predict([25]) == 77
 
+
 def test_linear_regression_with_multiple_features():
     """
     Test linear regression with multiple features by comparing with sklearn implementation.
@@ -28,13 +29,13 @@ def test_linear_regression_with_multiple_features():
 
     # Feature 1: house size (1000-3000 sq ft)
     house_size = np.random.uniform(1000, 3000, n_samples)
-    
+
     # Feature 2: number of bedrooms (1-5)
     bedrooms = np.random.randint(1, 6, n_samples)
 
     # Feature 3: age of house (0-30 years)
     age = np.random.uniform(0, 30, n_samples)
-    
+
     # Create target: price = 100 + 0.1 * size + 20 * bedrooms - 2 * age + noise
     true_price = 100 + 0.1 * house_size + 20 * bedrooms - 2 * age
     noise = np.random.normal(0, 10, n_samples)

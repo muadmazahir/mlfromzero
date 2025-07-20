@@ -14,6 +14,3 @@ def test_vector_operatios():
     assert vector_multiplied == 32
     assert vector_multiplied_by_scalar.vector_list == [2, 4, 6]
     assert vector_subtracted.vector_list == [-3, -3, -3]
-
-
-    
