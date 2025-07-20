@@ -118,13 +118,9 @@ w_4
 \end{bmatrix}
 $$
 
-where:
+i.e:
 
-- $\begin{bmatrix}w_{11} & w_{12}\end{bmatrix} =$ all weights of last layers neuron's
-
-- $ \begin{bmatrix} w_7 & w_9 \\ w_8 & w_{10}\end{bmatrix} =$ all weights of third hidden layer's neuron's
-
-- $\begin{bmatrix} w_3 \\ w_4 \end{bmatrix}=$ The first weight of each neuron in the second hidden layer
+(all weights of last layers neuron's) . (all weights of third hidden layer's neuron's) . (The first weight of each neuron in the second hidden layer)
 
 
 
@@ -133,5 +129,5 @@ where:
 Once the partial derivatives are computed, parameters are updated using gradient descent:
 
 $$
-\theta_{\text{new}} = \theta_{\text{old}}-\left( \text{learning\_rate} \cdot \frac{\partial \mathcal{L}}{\partial \theta} \right)
+\theta_{\text{new}} = \theta_{\text{old}}-\left( \text{learning rate} \cdot \frac{\partial \mathcal{L}}{\partial \theta} \right)
 $$
